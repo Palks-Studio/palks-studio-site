@@ -37,8 +37,6 @@ L’accent est mis sur :
 
 ## Contenu de ce dépôt
 
-Ce dépôt contient :  
-
 ### 1. Le site Palks Studio (version publique)
 
 Les pages du site présentent :  
