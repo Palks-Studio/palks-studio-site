@@ -53,12 +53,13 @@ The emphasis is placed on:
 ## Project structure
 
 ```
-/palks-studio_website/
+/palks-studio/
 │
 ├── index.html                               → Landing neutre, choix de langue (FR) / Neutral entry, language selector (EN)
 │
 ├── fr/
 │   ├── index.html                           → Accueil principal
+│   ├── facturation-batch.html               → Page de présentation du service de facturation batch
 │   ├── studio.html                          → Présentation de Palks Studio
 │   ├── approche.html                        → Approche et principes de travail
 │   ├── ressources.html                      → Ressources techniques
@@ -76,6 +77,7 @@ The emphasis is placed on:
 │
 ├── en/
 │   ├── index.html                           → Home page
+│   ├── batch-invoicing.html                 → Service page for batch invoicing
 │   ├── studio.html                          → Studio overview
 │   ├── approach.html                        → Method & principles
 │   ├── resources.html                       → Technical resources
@@ -98,9 +100,6 @@ The emphasis is placed on:
 │
 ├── LICENCE.md                               → Conditions d’utilisation et cadre légal (FR)
 ├── LICENSE.md                               → Terms of use and legal Framework (EN)
-│
-├── README_FR.md                             → Documentation générale du système (FR)
-├── README.md                                → General system documentation (EN)
 │
 ├── downloads_tokens/
 │   ├── downloads.log                        → Journal des téléchargements réels (FR) / Download activity log (EN)
@@ -145,15 +144,20 @@ The site pages present:
 - the conceptual foundations  
 - the technical tools developed  
 - legal and informational pages  
-- as well as access to the digital storefront  
+- as well as access to the digital storefront
 
-The site is intentionally sober, static, and readable in the browser.  
-It serves both as a showcase of the Palks Studio approach and as the entry point  
-for the sale and distribution of digital products.
+The site is intentionally sober, static, and readable on the client side.  
+It serves both as a showcase of the Palks Studio approach and as an entry point for the sale and distribution of digital products,  
+as well as a showcase for the monthly batch invoicing service operated via Althemia.
 
 On the server side, the site relies on a minimal pipeline:  
-`Stripe → Webhook → PDF invoice → secure token → download`,  
-without a CMS and without a database.
+`Stripe → Webhook → PDF Invoice → Secure Token → Download`,  
+with no CMS and no database.
+
+**Note — Batch invoicing**
+In addition to the unit-based Stripe flow, Palks Studio (via Althemia) offers  
+a monthly service based on the submission of a single CSV file, the generation of PDF invoices for month N-1,  
+and the delivery of a structured ZIP file, with traceable archiving available on request.
 
 ---
 
