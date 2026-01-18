@@ -6,32 +6,131 @@
 
 ![License](https://img.shields.io/badge/License-LICENSE.md-lightgreen.svg)
 
-# Palks Studio — Vitrine publique
+# Palks Studio — Site statique + boutique numérique  
 
-Ce dépôt contient la vitrine publique de Palks Studio.
+Ce dépôt contient le site public de **Palks Studio**, qui combine :  
 
-Il regroupe le site, les ressources de présentation et les documents accessibles publiquement, dans un objectif de clarté, de lisibilité et de transparence.
+- un site statique en HTML, sobre et sans tracking  
+- une boutique numérique légère côté serveur  
+- un système autonome de facturation PDF  
+- une distribution sécurisée de fichiers téléchargeables par token  
 
-Ce dépôt n’est pas un produit, ni un framework, ni une bibliothèque logicielle.  
-Il s’agit d’un support de référence permettant de comprendre la démarche, les outils et les choix portés par Palks Studio.
+L’ensemble fonctionne sans CMS, sans base de données et sans dépendance SaaS inutile,  
+en s’appuyant uniquement sur des fichiers plats (JSON/CSV) et des scripts PHP minimalistes.  
+
+Le dépôt regroupe :  
+
+- le site public (pages, styles, images, contenus)  
+- les composants de paiement et de livraison numérique  
+- ainsi que les documents accessibles publiquement  
+dans un objectif de clarté, de lisibilité et de transparence  
+
+Ce dépôt n’est pas un produit clé en main, ni un framework, ni une bibliothèque logicielle.  
+Il s’agit d’un support de référence permettant de comprendre la démarche,  
+les outils et les choix techniques portés par Palks Studio.  
 
 ---
 
-## À propos de Palks Studio
+## À propos de Palks Studio  
 
-Palks Studio conçoit des outils techniques, des structures de documentation et des environnements de travail pensés pour être :  
+Palks Studio conçoit des outils techniques, des structures de documentation  
+et des environnements de travail pensés pour être :  
 
 - lisibles  
 - compréhensibles  
 - autonomes  
-- maintenables dans le temps
+- maintenables dans le temps  
 
 L’accent est mis sur :  
 
 - la simplicité fonctionnelle  
 - la maîtrise des dépendances  
 - la transparence des choix techniques  
-- la durabilité plutôt que la mode
+- la durabilité plutôt que la mode  
+
+---
+
+## Structure du projet
+
+```
+/palks-studio_website/
+│
+├── index.html                               → Landing neutre, choix de langue (FR) / Neutral entry, language selector (EN)
+│
+├── fr/
+│   ├── index.html                           → Accueil principal
+│   ├── studio.html                          → Présentation de Palks Studio
+│   ├── approche.html                        → Approche et principes de travail
+│   ├── ressources.html                      → Ressources techniques
+│   ├── static-site.html                     → Socle de site statique
+│   ├── chatbot-flask.html                   → Chatbot Flask auto-hébergé
+│   ├── framework-documentation.html         → Framework de documentation
+│   ├── pack-formatage-vscode.html           → Pack de formatage VS Code
+│   ├── liens.html                           → Liens, ressources, produits
+│   ├── mentions-legales.html                → Mentions légales (FR) / Legal notice (EN)
+│   ├── contact.html                         → Page de contact
+│   ├── cgv.html                             → Conditions générales de vente
+│   ├── faq.html                             → Foire aux questions
+│   └── politique-confidentialite.html       → Politique de confidentialité (FR) / Privacy policy (EN)
+│
+│
+├── en/
+│   ├── index.html                           → Home page
+│   ├── studio.html                          → Studio overview
+│   ├── approach.html                        → Method & principles
+│   ├── resources.html                       → Technical resources
+│   ├── static-site.html                     → Professional static foundation
+│   ├── flask-chatbot.html                   → Self-hosted Flask chatbot
+│   ├── documentation-framework.html         → Documentation framework
+│   ├── vscode-formatting-pack.html          → VS Code formatting pack
+│   ├── links.html                           → Links & resources
+│   ├── contact.html                         → Contact page
+│   ├── faq.html                             → Frequently Asked Questions
+│   └── terms.html                           → Terms and Conditions
+│
+├── assets/
+│   ├── css/
+│   │   └── style.css                        → Global stylesheet (FR) / Feuille de styles globale (EN)
+│   └── img/                                 → Images et visuels (FR) / Images and visuals (EN)
+│
+├── robots.txt                               → Règles pour moteurs de recherche (FR) / Search engine directives (EN)
+├── sitemap.xml                              → Plan du site pour indexation (FR) / Sitemap for indexing (EN)
+│
+├── LICENCE.md                               → Conditions d’utilisation et cadre légal (FR)
+├── LICENSE.md                               → Terms of use and legal Framework (EN)
+│
+├── README_FR.md                             → Documentation générale du système (FR)
+├── README.md                                → General system documentation (EN)
+│
+├── downloads_tokens/
+│   ├── downloads.log                        → Journal des téléchargements réels (FR) / Download activity log (EN)
+│   ├── security.log                         → Journal des accès sécurisés aux fichiers (FR) / Secure download access log (EN)
+│   └── tokens.json                          → Stockage des tokens de téléchargement (FR) / Download token storage (EN)
+│
+├── config/
+│   └── download.php                         → Configuration centrale des téléchargements (FR) / Central download configuration (EN)
+│
+├── library/
+│   ├── cancel.html                          → Page d’annulation de paiement (FR)/ Payment cancellation page (EN)
+│   ├── success.html                         → Page de paiement validé (FR) / Payment success page (EN)
+│   ├── counter.json                         → Compteur persistant de factures (FR) / Persistent invoice counter (EN)
+│   ├── get_counter.php                      → Lecture sécurisée du compteur de factures (FR) / Secure invoice counter reader (EN)
+│   ├── lib_*.php                            → Incrémentation atomique du numéro de facture (FR) / Secure invoice counter reader (EN)
+│   ├── lib_*.php                            → Génération HTML des factures (FR) / Atomic invoice number increment (EN)
+│   ├── lib_*.php                            → Envoi e-mails transactionnels (FR) / Transactional email delivery (EN)
+│   ├── lib_*.php                            → Génération PDF via DomPDF (FR) / PDF generation via DomPDF (EN)
+│   └── template_invoice.html                → Template HTML de facture (FR) / Invoice HTML template (EN)
+│
+├── products/
+│   └── (store files)                        → Fichiers produits numériques (FR) / Digital product files (EN)
+│
+└── endpoint/
+    ├── endpoint_checkout.php                → Initialisation d’une session de paiement (FR) / Checkout session initialization (EN)
+    ├── endpoint_payment.php                 → Traitement des événements de paiement (FR) / Payment event handler (EN)
+    ├── endpoint_delivery.php                → Traitement post-paiement (FR) / Post-payment fulfillment handler (EN)
+    └── endpoint_access.php                  → Point d’accès sécurisé aux fichiers (FR) / Secure file access endpoint (EN)
+```
+
 
 ---
 
@@ -45,51 +144,56 @@ Les pages du site présentent :
 - les ressources proposées  
 - les fondations conceptuelles  
 - les outils techniques développés  
-- les pages légales et informatives
+- les pages légales et informatives  
+- ainsi que l’accès à la boutique numérique  
 
-Le site est volontairement sobre, statique et lisible.  
-Il sert de point d’entrée vers les ressources et projets publics.
+Le site est volontairement sobre, statique et lisible côté navigateur.  
+Il sert à la fois de vitrine de la démarche Palks Studio et de point d’entrée  
+vers la vente et la distribution de produits numériques.
+
+Côté serveur, le site s’appuie sur un pipeline minimal :  
+`Stripe → Webhook → Facture PDF → Token sécurisé → Téléchargement`,  
+sans CMS et sans base de données.
 
 ---
 
-### 2. Ressources et présentations publiques
+### 2. Ressources et distribution numérique
 
-Certaines ressources sont fournies sous forme de documents ou d’archives, notamment lorsque le contenu comprend :  
+Certaines ressources sont fournies sous forme de documents, archives ou fichiers téléchargeables, notamment lorsque le contenu comprend :  
 
 - plusieurs fichiers  
 - des structures complètes  
-- des exemples ou supports pédagogiques
+- des exemples ou supports pédagogiques  
+- des outils ou gabarits réutilisables  
 
-Ces éléments sont regroupés dans des dossiers dédiés afin de préserver la clarté du dépôt.
+Ces éléments sont regroupés dans des dossiers dédiés afin de préserver  
+la clarté du dépôt et la traçabilité des livrables.
 
----
-
-### 3. Structure d’exemple
-
-Le dossier `public_version/` contient des fichiers illustrant la structure logique de certains projets ou ressources.
-
-Il ne s’agit pas d’outils exécutables, mais de références structurelles destinées à expliquer l’organisation et les principes retenus.
+La distribution des fichiers se fait via un système sécurisé à lien temporaire  
+et usage unique, journalisé côté serveur.
 
 ---
 
 ## Ce que ce dépôt est
 
+- Un site public statique + boutique numérique légère  
 - Une vitrine technique et documentaire  
 - Un point de référence public  
 - Un support de compréhension  
-- Une démonstration de structure et de méthode
+- Une démonstration de structure et de méthode  
+- Un exemple concret d’architecture sobre sans CMS ni base de données
 
 ---
 
 ## Ce que ce dépôt n’est pas
 
-- Un dépôt de production  
-- Un produit clé en main  
+- Un framework e-commerce  
+- Une plateforme SaaS  
+- Un produit générique clé en main  
 - Une bibliothèque logicielle  
-- Un framework  
-- Un espace de support ou de mise à jour continue
+- Un espace de support ou de mises à jour contractuelles  
 
-Les outils complets, scripts et environnements de production ne sont pas exposés ici.
+Les clés, secrets et certains chemins de production ne sont pas exposés ici.
 
 ---
 
@@ -100,11 +204,13 @@ Palks Studio fait le choix de :
 - documenter sérieusement ses projets  
 - expliquer les choix et les limites  
 - éviter les promesses floues  
-- ne pas masquer le travail derrière du marketing
+- ne pas masquer le travail derrière du marketing  
+- privilégier la lisibilité et la traçabilité plutôt que la complexité  
 
-Le code, les structures et la documentation sont pensés pour être compris avant toute décision d’utilisation ou d’achat.
+Le code, les structures et la documentation sont pensés pour être compris  
+avant toute décision d’utilisation ou d’achat.
 
-Ce dépôt participe à cette démarche de transparence.
+Ce dépôt participe pleinement à cette démarche de transparence.  
 
 ---
 
